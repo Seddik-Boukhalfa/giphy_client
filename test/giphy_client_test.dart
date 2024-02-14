@@ -3,12 +3,12 @@ import 'package:http/http.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-import 'giphy_client_test.mocks.dart';
 
 import 'data/byId.dart';
 import 'data/random.dart';
 import 'data/search.dart';
 import 'data/trending.dart';
+import 'giphy_client_test.mocks.dart';
 
 @GenerateMocks([Client])
 void main() {
@@ -53,7 +53,7 @@ void main() {
       when(httpClient.get(any))
           .thenAnswer((_) async => Response(randomBody, 200));
 
-      final gif = await client.random();
+      final gif = await client.random(tag: '');
 
       expect(gif, TypeMatcher<GiphyGif>());
       expect(gif.title, 'drunk bbc two GIF by BBC');
