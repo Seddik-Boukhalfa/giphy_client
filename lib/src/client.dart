@@ -31,7 +31,7 @@ class GiphyClient {
   }) async {
     return _fetchCollection(
       baseUri.replace(
-        path: '$_apiVersion/$type/trending',
+        path: '${type == 'emoji' ? 'v2' : 'v1'}/$type/trending',
         queryParameters: <String, String>{
           'offset': '$offset',
           'limit': '$limit',
